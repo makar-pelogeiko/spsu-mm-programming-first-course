@@ -29,7 +29,7 @@ enter_begin:
 		if (*variable_int * 10 + (int)c - '0' < 0)		//обработка выхода за пределы int
 		{
 			while (getchar() != '\n');
-			printf("input is too big\n");
+			printf("invalid input, input is too big\n");
 			goto enter_begin;
 		}
 		*variable_int = *variable_int * 10 + (int)c - '0';
