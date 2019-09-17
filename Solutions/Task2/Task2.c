@@ -1,17 +1,17 @@
 #include <stdio.h>
 
-void enter(char* massage, int* variable_int)	//функция для считывания переменной типа int
+void enter(char* massage, int* variable_int)	//function for int input
 {
 	char c;
 enter_begin:
 	printf("%s", massage);
-	do {								//обработка пробелов в начале строки
+	do {								//handling spaces at the beginning of a line
 		c = getchar();
 	} while (c == ' ');
 
-	if (c == '\n') goto enter_begin;	//обработка пустой строки
+	if (c == '\n') goto enter_begin;	//handling empty input
 
-	short minus;						//обработка отрицательных чисел
+	short minus;						//handling negative input
 	if (c == '-')
 	{
 		c = getchar();
@@ -26,7 +26,7 @@ enter_begin:
 
 	while (c >= '0' && c <= '9')
 	{
-		if (*variable_int * 10 + (int)c - '0' < 0)		//обработка выхода за пределы int
+		if (*variable_int * 10 + (int)c - '0' < 0)		//handling int overflow
 		{
 			while (getchar() != '\n');
 			printf("invalid input, input is too big\n");
@@ -36,7 +36,7 @@ enter_begin:
 		c = getchar();
 	}
 
-	while (c == ' ')		//пост обработка и проверка на правильность входа
+	while (c == ' ')		//post processing and validation of input
 	{
 		c = getchar();
 	}
@@ -50,7 +50,7 @@ enter_begin:
 	*variable_int *= minus;
 }
 
-int gcd(int a, int b)			//поиск наибольшего общего кратного
+int gcd(int a, int b)			//greatest common divisor
 {
 	while (a > 0 && b > 0)
 	{
@@ -64,7 +64,7 @@ int main()
 {
 	int x, y = 0, z = 0;
 
-	do {												//ввод данных
+	do {												//data input
 		enter("Enter first number: ", &x);
 		if (x < 0)
 		{

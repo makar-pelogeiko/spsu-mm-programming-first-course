@@ -1,10 +1,10 @@
 #include <stdio.h>
 
-void bin(char* str, int value, int size)	//переводит value в строку с его бинарным представлением
-{											//size - количество бит
-	str[abs(size)] = '\0';					//младшему индексу в строке соответствует младший бит, если size полож
-	int i;									//младшему индексу в строке соответствует стфрший бит, если size отриц
-	if (size > 0)							//str - строка в которую будет записан результат
+void bin(char* str, int value, int size)	//conversion to binary notation with writing to a string
+{											//size - bit number
+	str[abs(size)] = '\0';					//if size is positive, the least bit corresponds to the lowest index
+	int i;									//if size is negative, the least bit corresponds to the largest index
+	if (size > 0)							//str - result string
 	{
 		for (i = 0; (i < size) && value; i++)
 		{
@@ -45,10 +45,10 @@ void bin(char* str, int value, int size)	//переводит value в строку с его бинарн
 	}
 }
 
-int dimension(int value)		//выводит количество бит, необходимое для записи числа
+int dimension(int value)		//number of bits for conversion to binary
 {
 	int i;
-	if (!value)		//для value = 0
+	if (!value)		//for value == 0
 	{
 		value++;
 	}
@@ -61,15 +61,15 @@ int dimension(int value)		//выводит количество бит, необходимое для записи числа
 
 int main()
 {
-	const char name[] = "Антон";
-	const char surname[] = "Казанцев";
-	const char patron[] = "Алексеевич";
+	const char name[] = "Anton";
+	const char surname[] = "Kazancev";
+	const char patron[] = "Alexeyevich";
 
 	int multiple = strlen(name) * strlen(surname) * strlen(patron);
 
 	char bin_str[65];
 
-	// вывод отрицательного 32 битного числа
+	//return of negative 32 bit number
 
 	int bit_count = 32;
 	bin(bin_str, multiple, bit_count);
@@ -91,16 +91,16 @@ int main()
 
 	int std_bin_count = dimension(multiple);
 
-	// вывод положительного представления числа в IEEE 754 binary32
+	// return of positive number in IEEE 754 binary32
 
 	printf("0");
-	bin(bin_str, std_bin_count + 126, -8);	//вывод экспоненты
+	bin(bin_str, std_bin_count + 126, -8);	//exhibitor
 	for (int i = 0; i < 8; i++)
 	{
 		printf("%c", bin_str[i]);
 	}
 
-	bin(bin_str, multiple, -(std_bin_count - 1));	//вывод мантисы
+	bin(bin_str, multiple, -(std_bin_count - 1));	//mantissa
 	for (int i = 0; i < std_bin_count - 2; i++)
 	{
 		printf("%c", bin_str[i]);
@@ -111,17 +111,17 @@ int main()
 	}
 	printf("\n");
 
-	// вывод отрицательного представления числа в IEEE 754 binary64
+	// return of negative number in IEEE 754 binary64
 
 	printf("1");
 
-	bin(bin_str, std_bin_count + 1022, -11);	//вывод экспоненты двойной точности
+	bin(bin_str, std_bin_count + 1022, -11);	//exhibitor
 	for (int i = 0; i < 11; i++)
 	{
 		printf("%c", bin_str[i]);
 	}
 
-	bin(bin_str, multiple, -(std_bin_count - 1));	//вывод мантисы
+	bin(bin_str, multiple, -(std_bin_count - 1));	//mantissa
 	for (int i = 0; i < std_bin_count - 2; i++)
 	{
 		printf("%c", bin_str[i]);
