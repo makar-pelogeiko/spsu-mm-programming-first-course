@@ -5,11 +5,14 @@ void enter(char* massage, int* variable_int)	//function for int input
 	char c;
 enter_begin:
 	printf("%s", massage);
-	do {								//handling spaces at the beginning of a line
+	do
+	{								//handling spaces at the beginning of a line
 		c = getchar();
-	} while (c == ' ');
+	}
+	while (c == ' ');
 
-	if (c == '\n') goto enter_begin;	//handling empty input
+	if (c == '\n')
+		goto enter_begin;		//handling empty input
 
 	short minus;						//handling negative input
 	if (c == '-')
@@ -18,28 +21,24 @@ enter_begin:
 		minus = -1;
 	}
 	else
-	{
 		minus = 1;
-	}
 
 	*variable_int = 0;
 
 	while (c >= '0' && c <= '9')
 	{
-		if (*variable_int * 10 + (int)c - '0' < 0)		//handling int overflow
+		if (*variable_int * 10 + c - '0' < 0)		//handling int overflow
 		{
 			while (getchar() != '\n');
 			printf("invalid input, input is too big\n");
 			goto enter_begin;
 		}
-		*variable_int = *variable_int * 10 + (int)c - '0';
+		*variable_int = *variable_int * 10 + c - '0';
 		c = getchar();
 	}
 
 	while (c == ' ')		//post processing and validation of input
-	{
 		c = getchar();
-	}
 
 	if (c != '\n')
 	{
@@ -54,41 +53,43 @@ int gcd(int a, int b)			//greatest common divisor
 {
 	while (a > 0 && b > 0)
 	{
-		if (a > b) a = a % b;
-		else b = b % a;
+		if (a > b)
+			a = a % b;
+		else
+			b = b % a;
 	}
 	return a + b;
 }
 
 int main()
 {
-	int x, y = 0, z = 0;
+	int x, y, z;
 
-	do {												//data input
+	do 
+	{												//data input
 		enter("Enter first number: ", &x);
 		if (x < 0)
-		{
 			printf("invalid input, natural number expacted\n");
-		}
-	} while (x < 0);
+	}
+	while (x < 0);
 	printf("\n");
 
-	do {
+	do
+	{
 		enter("Enter second number: ", &y);
 		if (y < 0)
-		{
 			printf("invalid input, natural number expacted\n");
-		}
-	} while (y < 0);
+	}
+	while (y < 0);
 	printf("\n");
 
-	do {
+	do
+	{
 		enter("Enter third number: ", &z);
 		if (z < 0)
-		{
 			printf("invalid input, natural number expacted\n");
-		}
-	} while (z < 0);
+	}
+	while (z < 0);
 	printf("\n");
 	
 	if (x > y)
@@ -110,17 +111,18 @@ int main()
 		}
 	}
 
-	if (x * x + y * y == z * z)	printf("Pythagorean triple\n");
+	if (x * x + y * y == z * z)
+		printf("Pythagorean triple\n");
 	else
 	{
 		printf("Not Pythagorean triple\n");
 		return 0;
 	}
 
-	if (gcd(x, y) == 1 && gcd(x, z) == 1 && gcd(y, z) == 1) printf("Simple\n");
+	if (gcd(x, y) == 1 && gcd(x, z) == 1 && gcd(y, z) == 1)
+		printf("Simple\n");
 	else
-	{
 		printf("Not simple\n");
-	}
+
 	return 0;
 }
