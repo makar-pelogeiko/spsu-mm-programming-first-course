@@ -1,5 +1,4 @@
-﻿#include <stdio.h>
-#include <locale.h>
+#include <stdio.h>
 
 int isPrime(unsigned int x)
 {
@@ -20,14 +19,13 @@ int isPrime(unsigned int x)
 
 int main()
 {
-	setlocale(LC_ALL, "Russian");
-	unsigned int x = 1;
+	unsigned int x = 2;
 
-	for (int i = 0; i < 32; i++) {
+	for (int i = 1; i < 32; i++) {
 		x = x << 1;
 		if (isPrime(x - 1))
 		{
-			printf("Число %u - простое\n", x - 1);
+			printf("Number %u is prime.\n", x - 1);
 		}
 	}
 	return 0;
