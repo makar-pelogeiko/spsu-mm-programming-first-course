@@ -91,7 +91,7 @@ int main()
 	for (int i = 11 + std_bin_count; i < 64; i++)
 		IEEE754bin64[i] = '0';
 
-	printf("%s\n", IEEE754bin64);	//in IEEE754bin64 we have multiple in IEEE 754 binary 32
+	printf("%s\n", IEEE754bin64);	//in IEEE754bin64 we have multiple in IEEE 754 binary 64
 									//the least bit corresponds to the largest index for easy printf
 
 	return 0;
