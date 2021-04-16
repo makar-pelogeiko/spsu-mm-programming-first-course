@@ -1,4 +1,4 @@
-name: EZRep Build
+name: simple Build
 
 on:
   push:
@@ -15,7 +15,7 @@ jobs:
       uses: microsoft/setup-msbuild@v1
 
     - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.2
+      uses: NuGet/setup-nuget@v1
       
     - name: Navigate to Workspace
       run: cd $GITHUB_WORKSPACE
