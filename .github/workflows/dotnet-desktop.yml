@@ -29,21 +29,3 @@ jobs:
     - name: Build Solution
       run: |
         msbuild.exe WCFService.sln /nologo /nr:false /p:platform="Any CPU" /p:configuration="Release"
-        
-    - name: Upload artifact
-      uses: actions/upload-artifact@v1.0.0
-      with:
-        name: EZRepBundle
-        path: "./_build"        
-        
-    - name: Login to Azure
-      uses: azure/login@v1
-      with:
-        creds: ${{ secrets.AZURE_CREDENTIALS }}
-    
-    - name: Publish Artifacts to Azure
-      uses: Azure/webapps-deploy@v2
-      with:
-        app-name: ezrep
-        package: "./_build"
-        slot-name: production        
