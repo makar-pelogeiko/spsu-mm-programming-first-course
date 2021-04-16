@@ -4,7 +4,11 @@ on:
   push:
     branches: master
 
+defaults:
+  run:
+    working-directory: WCFService\projectData
 jobs:
+
   build:
     runs-on: windows-latest
 
@@ -16,9 +20,7 @@ jobs:
 
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1
-      
-    - name: Navigate to Workspace
-      run: pwd; dir; cd WCFService\projectData
+    
     - name: Restore Packages
       run: nuget restore WCFService.sln
 
