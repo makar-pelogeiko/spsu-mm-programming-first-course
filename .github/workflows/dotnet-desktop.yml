@@ -18,7 +18,7 @@ jobs:
       uses: NuGet/setup-nuget@v1
       
     - name: Navigate to Workspace
-      run: cd $GITHUB_WORKSPACE\WCFService\projectData
+      run: cd WCFService\projectData
     - name: Restore Packages
       run: nuget restore WCFService.sln
 
